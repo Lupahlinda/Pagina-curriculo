@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title><%= profile.name %> — Currículo</title>
+    <meta name="description" content="Currículo de <%= profile.name %> — <%= profile.title %> em <%= profile.location %>." />
+    <meta property="og:title" content="<%= profile.name %> — Currículo" />
+    <meta property="og:description" content="<%= profile.summary %>" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="/" />
+    <meta name="theme-color" content="#d79921" />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel="stylesheet" href="/style.css" />
+
+    <link rel="icon" href="/favicon.ico" />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "<%= profile.name %>",
+        "jobTitle": "<%= profile.title %>",
+        "url": "<%= profile.githubUrl %>",
+        "sameAs": [
+          "<%= profile.githubUrl %>",
+          "<%= profile.linkedinUrl %>"
+        ],
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Brasília",
+          "addressRegion": "DF",
+          "addressCountry": "BR"
+        }
+      }
+    </script>
+  </head>
+  <body class="antialiased">
+    <header class="px-6 pt-10 pb-4">
+      <div class="nb-container">
+        <div class="nb-header p-8 md:p-10">
+          <div class="flex flex-col md:flex-row items-start md:items-end justify-between gap-6">
+              <div>
+                <h1 class="nb-title text-3xl sm:text-5xl"><%= profile.name %></h1>
+                <p class="mt-2 text-lg sm:text-xl"><%= profile.title %></p>
+              <% if (profile.headlineEducation) { %>
+                <p class="mt-1 text-sm sm:text-base"><%= profile.headlineEducation %></p>
+              <% } %>
+              <p class="mt-1 text-sm sm:text-base"><%= profile.location %></p>
+              <div class="mt-4 flex flex-wrap gap-3">
+                <a href="<%= profile.githubUrl %>" target="_blank" rel="noopener" class="nb-btn">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4"><path d="M12 .5C5.73.5.77 5.46.77 11.73c0 4.93 3.19 9.1 7.62 10.58.56.1.77-.24.77-.55 0-.27-.01-1-.02-1.97-3.1.67-3.76-1.5-3.76-1.5-.51-1.3-1.25-1.65-1.25-1.65-1.02-.7.08-.69.08-.69 1.13.08 1.73 1.16 1.73 1.16 1 .1 1.83.76 2.27 1.13.1-.73.39-1.23.72-1.51-2.48-.28-5.1-1.24-5.1-5.53 0-1.22.44-2.2 1.16-2.98-.12-.28-.5-1.42.11-2.96 0 0 .94-.3 3.07 1.14.89-.25 1.85-.38 2.8-.39.95.01 1.91.14 2.8.39 2.13-1.44 3.07-1.14 3.07-1.14.61 1.54.23 2.68.11 2.96.72.78 1.16 1.76 1.16 2.98 0 4.3-2.62 5.25-5.11 5.52.4.35.76 1.04.76 2.1 0 1.52-.01 2.74-.01 3.11 0 .31.2.65.78.54 4.44-1.48 7.62-5.65 7.62-10.58C23.23 5.46 18.27.5 12 .5z"/></svg>
+                  GitHub
+                </a>
+                <a href="<%= profile.linkedinUrl %>" target="_blank" rel="noopener" class="nb-btn nb-btn--aqua">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4"><path d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8h4V24h-4V8zm7.5 0h3.8v2.2h.05c.53-1 1.83-2.2 3.77-2.2 4.03 0 4.78 2.65 4.78 6.1V24h-4v-7.1c0-1.7-.03-3.9-2.38-3.9-2.38 0-2.75 1.86-2.75 3.78V24h-3.9V8z"/></svg>
+                  LinkedIn
+                </a>
+              </div>
+            </div>
+            <div class="w-full md:w-auto">
+              <img src="<%= profile.photoUrl %>" alt="Foto de perfil de <%= profile.name %>" class="nb-avatar" loading="lazy" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-6 -mt-8 sm:-mt-12 space-y-8 sm:space-y-10">
+      <section class="nb-card p-6 sm:p-8">
+        <h2 class="text-xl section-title">Sobre</h2>
+        <p class="mt-3 leading-relaxed"><%= profile.summary %></p>
+        <ul class="mt-4 grid sm:grid-cols-2 gap-3 list-disc list-inside">
+          <% profile.strengths.forEach(function(item){ %>
+            <li><%= item %></li>
+          <% }) %>
+        </ul>
+      </section>
+
+      <section class="grid md:grid-cols-1 gap-8">
+        <div class="nb-card p-6 sm:p-8">
+          <h2 class="text-xl section-title">Habilidades</h2>
+          <div class="mt-4 grid sm:grid-cols-2 gap-4">
+            <div>
+              <h3 class="text-sm font-medium">Linguagens</h3>
+              <div class="mt-2 flex flex-wrap gap-2">
+                <% profile.skills.languages.forEach(s => { %>
+                  <span class="nb-chip"><%= s %></span>
+                <% }) %>
+              </div>
+            </div>
+            <div>
+              <h3 class="text-sm font-medium">Frontend</h3>
+              <div class="mt-2 flex flex-wrap gap-2">
+                <% profile.skills.frontend.forEach(s => { %>
+                  <span class="nb-chip"><%= s %></span>
+                <% }) %>
+              </div>
+            </div>
+            <div>
+              <h3 class="text-sm font-medium">Backend</h3>
+              <div class="mt-2 flex flex-wrap gap-2">
+                <% profile.skills.backend.forEach(s => { %>
+                  <span class="nb-chip"><%= s %></span>
+                <% }) %>
+              </div>
+            </div>
+            <div>
+              <h3 class="text-sm font-medium">Bancos de Dados</h3>
+              <div class="mt-2 flex flex-wrap gap-2">
+                <% profile.skills.databases.forEach(s => { %>
+                  <span class="nb-chip"><%= s %></span>
+                <% }) %>
+              </div>
+            </div>
+            <div>
+              <h3 class="text-sm font-medium">DevOps</h3>
+              <div class="mt-2 flex flex-wrap gap-2">
+                <% profile.skills.devops.forEach(s => { %>
+                  <span class="nb-chip"><%= s %></span>
+                <% }) %>
+              </div>
+            </div>
+            <div>
+              <h3 class="text-sm font-medium">Dados/ML</h3>
+              <div class="mt-2 flex flex-wrap gap-2">
+                <% profile.skills.data.forEach(s => { %>
+                  <span class="nb-chip"><%= s %></span>
+                <% }) %>
+              </div>
+            </div>
+            <div>
+              <h3 class="text-sm font-medium">Outras</h3>
+              <div class="mt-2 flex flex-wrap gap-2">
+                <% profile.skills.other.forEach(s => { %>
+                  <span class="nb-chip"><%= s %></span>
+                <% }) %>
+              </div>
+            </div>
+            <div>
+              <h3 class="text-sm font-medium">Comportamentais</h3>
+              <div class="mt-2 flex flex-wrap gap-2">
+                <% profile.skills.soft.forEach(s => { %>
+                  <span class="nb-chip"><%= s %></span>
+                <% }) %>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+      </section>
+
+      <section class="nb-card p-6 sm:p-8">
+        <h2 class="text-xl section-title">Projetos em Destaque</h2>
+        <div class="mt-4 grid md:grid-cols-2 gap-6">
+          <% profile.projects.forEach(function(p){ %>
+            <a href="<%= p.url %>" target="_blank" rel="noopener" class="nb-card block p-5">
+              <div class="flex items-center justify-between">
+                <h3 class="font-medium"><%= p.name %></h3>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5"><path d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42 9.3-9.29H14V3z"/><path d="M5 5h5V3H3v7h2V5z"/></svg>
+              </div>
+              <p class="mt-2 text-sm leading-relaxed"><%= p.description %></p>
+            </a>
+          <% }) %>
+        </div>
+      </section>
+
+      <footer class="pb-12 pt-2 text-center text-sm">
+        Feito com Node.js, Express, EJS e Tailwind. • © <span id="year"></span> <%= profile.name %>
+      </footer>
+    </main>
+
+    <script>
+      document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,101 @@
+:root{
+  --gb-bg: #fbf1c7;
+  --gb-panel: #f2e5bc;
+  --gb-ink: #3c3836;
+  --gb-muted: #7c6f64;
+  --gb-blue: #458588;
+  --gb-green: #98971a;
+  --gb-yellow: #d79921;
+  --gb-purple: #b16286;
+  --gb-aqua: #689d6a;
+  --gb-orange: #d65d0e;
+}
+
+html,body{
+  background: var(--gb-bg);
+  color: var(--gb-ink);
+}
+
+.nb-container{
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.nb-card{
+  background: var(--gb-panel);
+  border: 3px solid var(--gb-ink);
+  box-shadow: 8px 8px 0 0 var(--gb-ink);
+  border-radius: 12px;
+}
+
+.nb-chip{
+  display: inline-block;
+  padding: 6px 10px;
+  border: 2px solid var(--gb-ink);
+  border-radius: 8px;
+  background: #fffef2;
+  color: var(--gb-ink);
+  font-size: 12px;
+  font-weight: 600;
+  box-shadow: 4px 4px 0 0 var(--gb-ink);
+}
+
+.nb-btn{
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  border: 3px solid var(--gb-ink);
+  border-radius: 10px;
+  background: var(--gb-yellow);
+  color: var(--gb-ink);
+  font-weight: 700;
+  box-shadow: 6px 6px 0 0 var(--gb-ink);
+  transition: transform .08s ease, box-shadow .08s ease, filter .1s ease;
+}
+.nb-btn:hover{ transform: translate(-3px,-3px); box-shadow: 10px 10px 0 0 var(--gb-ink); filter: saturate(1.1);} 
+.nb-btn:active{ transform: translate(0,0); box-shadow: 3px 3px 0 0 var(--gb-ink);} 
+
+.nb-title{
+  font-weight: 900;
+  letter-spacing: -0.02em;
+}
+
+.nb-header{
+  border: 4px solid var(--gb-ink);
+  box-shadow: 10px 10px 0 0 var(--gb-ink);
+  background: var(--gb-panel);
+  border-radius: 16px;
+}
+
+a{ color: var(--gb-blue); font-weight: 600; }
+a:hover{ text-decoration: underline; }
+
+.nb-btn--aqua{ background: var(--gb-aqua); }
+
+.nb-avatar{
+  width: 180px;
+  height: 230px;
+  border: 4px solid var(--gb-ink);
+  box-shadow: 8px 8px 0 0 var(--gb-ink);
+  border-radius: 16px;
+  object-fit: cover;
+  background: #fffef2;
+}
+
+.badge{
+  display: inline-block;
+  padding: 6px 10px;
+  border: 2px solid var(--gb-ink);
+  background: #fffdf0;
+  border-radius: 999px;
+  box-shadow: 4px 4px 0 0 var(--gb-ink);
+}
+
+.section-title{
+  font-weight: 800;
+}
+
+footer{
+  color: var(--gb-muted);
+}
