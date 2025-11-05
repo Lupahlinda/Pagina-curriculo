@@ -26,7 +26,7 @@ const profile = {
   title: 'Estudante de Desenvolvimento de Software | Full-Stack em formação',
   location: 'Brasília, Distrito Federal, Brasil',
   githubUrl: 'https://github.com/Lupahlinda',
-  linkedinUrl: 'https://www.linkedin.com/',
+  linkedinUrl: 'https://www.linkedin.com/in/luis-h-pereira-7010412b7',
   headlineEducation: 'Graduando no IESB',
   photoUrl: '/assets/foto.png',
   summary: 'Sólida base em desenvolvimento full-stack e engenharia de software, nível intermediário em JavaScript e TypeScript, atuando em frontend e backend. Experiência com ambientes Linux (Debian/Arch), fundamentos em Java, C, C++, Python (dados/ML), bancos SQL/NoSQL, engenharia de requisitos, arquitetura, DevOps e métodos ágeis. Vivência com análise de dados, machine learning, redes, sistemas distribuídos e segurança de aplicações. Perfil colaborativo, comunicação eficaz, gestão de projetos e espírito empreendedor.',
